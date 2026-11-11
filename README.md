@@ -1,10 +1,32 @@
-🚲 Smart City Bike Mobility & Station AnalyticsAn end-to-end data analytics project evaluating the operational performance, resource allocation, and infrastructure distribution of urban bike-sharing networks across multiple European municipal contracts (spanning 2022 to 2025).📌 Project OverviewThe Smart City Bike Mobility & Station Analytics project integrates and aggregates data across 1,000+ stations, 57K total bike stands, and 20K available bikes. The robust data model features star-schema principles, connecting dimension metadata with real-time operational fact logs to derive key mobility, geographic, and temporal insights.   🎯 Key Objectives:Operational Status Analysis: Evaluate the ratio and spatial distribution of open vs. closed bike stations.   Resource Allocation Assessment: Analyze the gap between total infrastructure capacity (bike stands) and actual inventory levels (available bikes).   Temporal Trend Tracking: Monitor occupancy rate fluctuations and usage patterns over a multi-year timeline (2022–2025).   Geographic & Contract Management: Leverage spatial mapping and contract-level slicing to streamline regional service delivery across municipalities (e.g., Lyon, Toulouse, Bruxelles-Capitale).   🗄️ Dataset & Schema ArchitectureThe data architecture is structured around clean relational modeling:Dim_Station (Dimension Table): Contains station metadata, unique identifiers, official names, street addresses, geographic coordinates (Position), contractor IDs, contract names, and Banking availability flags.   Fact_Bike_Activity (Fact Table): Captures operational metrics including active status (OPEN/CLOSED), total bike stands, available bike stands, available bikes, reward bonuses, and Last Update timestamps.   🛠️ Tools & TechnologiesPower BI: Data modeling, interactive dashboard design, and spatial mapping.   Power Query (ETL): Data cleaning, column transformation, duplicate removal, handling null values, and capitalizing text formats.   DAX (Data Analysis Expressions): Custom measure creation for dynamic calculations and KPIs.   📊 DAX Measures ImplementedCore metrics and KPIs were established using the following DAX formulas:Code snippetClosed_Stations_Count = CALCULATE([Total_Stations], Fact_Bike_Activity[Status] = "CLOSED")
+🚲 Smart City Bike Mobility & Station Analytics Dashboard
+​An interactive and comprehensive Power BI Dashboard designed to analyze urban bike-sharing networks, monitoring station statuses, bike availability, occupancy trends, and geographic distribution across different city contracts.
+​📌 Executive Summary / Key Metrics (KPIs)
+​Total Stations: 1K
+​Total Available Bikes: 20K
+​Total Bike Stands: 57K
+​Open Stations Count: 1K
+​Closed Stations Count: 1K
+​📊 Dashboard Overview & Visualizations
+​The Power BI report consists of multiple view pages detailing various aspects of the bike-sharing network:
+​1. Key Performance Indicators (KPIs & Measures)
+​Quick summary cards tracking total bike stands, available bikes, active/inactive stations.
+​2. Station & Network Analysis
+​Status Distribution (Open vs Closed): Donut chart showing the proportion of active vs inactive stations (approx. 50% Open / 50% Closed).
+​Contract Analysis by City / Network: Bar chart analyzing average bike stand capacities across different regional contracts (e.g., Dublin, Bruxelles, Lyon, Seville).
+​Top Contracts by Bike Stands: Horizontal bar charts identifying high-density bike networks.
+​3. Spatial & Trend Insights
+​Bike Station Map & Status Overview: Geospatial map visualization tracking physical station locations and real-time open/closed status.
+​Last Update & Occupancy Rate Trend: Line/Area charts visualizing temporal changes in capacity and occupancy rate over time (2022–2025).
+​Bike Stand vs Available Bike Analysis: Scatter plot illustrating correlation between total stand capacity and actual bike availability per station.
+​4. Interactive Data Filtering
+​Contract ID Slicers: Dynamic filters allowing users to slice metrics by specific contract nodes (e.g., Bes, Cer, Dub, Lil, Ami, Bru, Cre, Jcd, Lju).
 
-Open_Stations_Count = CALCULATE([Total_Stations], Fact_Bike_Activity[Status] = "OPEN")
-
-Total_Available_Bikes = SUM(Fact_Bike_Activity[Available Bikes])
-
-Total_Bike_Stands = SUM(Fact_Bike_Activity[Bike Stands])
-
-Total_Stations = DISTINCTCOUNT(Dim_Station[Number])
-📈 Dashboard & VisualizationsThe Power BI report provides an interactive executive overview comprising:Status Distribution (Donut Chart): Visualizes the network-wide operational balance.   Contract Analysis by City (Clustered Column Chart): Compares average bike stand capacities across municipal contracts (e.g., Dublin, Bruxelles-Capitale, Lyon, Toulouse).   Banking Availability (Horizontal Bar Chart): Assesses on-site digital/card payment infrastructure across networks.   Occupancy Rate Trend (Area/Line Chart): Tracks historical occupancy percentages from July 2022 to July 2025.   Top Contracts by Bike Stands (Horizontal Bar Chart): Ranks top-tier infrastructure hubs.   Bike Station Map & Status Overview (Geographic Visual): Maps regional station statuses dynamically across Europe.   Contract Status & Summary (Matrix Table): Offers precise numerical validation for contract-level inventory auditing.   Bike Stand vs. Available Bike Analysis (Scatter Plot): Identifies correlation patterns and detects capacity outliers.   Interactive Slicers: Dynamic contract ID filtering (Ami, Bes, Cer, Dub, Lyo, etc.).   💡 Key Insights & RecommendationsDescriptive: The network tracks ~1K stations with a total capacity of 57K bike stands and 20K active bikes. Major urban networks like Lyon, Toulouse, and Bruxelles-Capitale command the highest infrastructure coverage.   Diagnostic: Although an even 50%-50% split exists between open and closed stations network-wide, certain inactive stations continue to maintain stand allocations, requiring targeted maintenance audits.   Predictive: Multi-year trend analysis indicates cyclical demand fluctuations between 2022 and 2025, providing a baseline for predicting future urban transit surges.   Prescriptive: Reallocate fleet assets and investigate low-demand closures to optimize bike rebalancing toward high-utilization mobility hubs like Lyon and Toulouse.   
+🛠️ Tools & Technologies Used
+​Power BI Desktop: Dashboard design, data visualization, and page layouts.
+​DAX (Data Analysis Expressions): Calculated measures for counts, totals, percentages, and status checks.
+​Power Query: Data transformation, cleaning, and preprocessing.
+​Geospatial Mapping: Integrated map visuals for geographic tracking.
+​💡 Key Business Insights
+​1. Capacity Distribution: Major metropolitan areas retain the largest proportion of bike stands, requiring prioritized maintenance schedules.
+​2. Operational Status: Balanced distribution between open and closed stations highlights operational windows and maintenance downtime.
+​3. Availability Ratio: Correlation scatter plots help identify stations with high stand capacity but consistently low bike availability for stock rebalancing.
